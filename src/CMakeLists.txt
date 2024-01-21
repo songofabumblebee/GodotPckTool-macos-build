@@ -20,7 +20,7 @@ add_executable(godotpcktool main.cpp)
 target_link_libraries(godotpcktool PRIVATE pck)
 
 # Static standard lib
-target_link_libraries(godotpcktool PRIVATE -static-libgcc -static-libstdc++)
+target_link_libraries(godotpcktool PRIVATE -static-libstdc++)
 
 # Fully static executable
 if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
@@ -28,7 +28,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
 endif()
 
 if(NOT WIN32)
-  set_target_properties(godotpcktool PROPERTIES LINK_FLAGS_RELEASE "-s -fuse-ld=gold")
+  set_target_properties(godotpcktool PROPERTIES LINK_FLAGS_RELEASE "-s")
 else()
   set_target_properties(godotpcktool PROPERTIES LINK_FLAGS_RELEASE "-s")
 endif()
